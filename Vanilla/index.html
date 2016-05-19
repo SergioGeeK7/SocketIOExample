@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <h1>Index</h1>
+    
+    <button onclick="sendMessage()">Send</button>
+    
+    
+<script src="node_modules/socket.io-client/socket.io.js"></script>
+<script>
+    
+var socket = io();
+socket.on("connect",onConnect)
+socket.on("message",onMessage);
+socket.on('disconnect', onDisconect);
+
+function onConnect (){
+    console.log("Conected !!!");
+}
+    
+    
+function onMessage (message){
+    console.log(message);
+}
+    
+function sendMessage (){
+    socket.emit("message","mensaje mio jeje ");
+}
+    
+    
+function onDisconect () {
+    console.error("desconectado")
+}
+    
+</script>
+
+</body>
+</html>
